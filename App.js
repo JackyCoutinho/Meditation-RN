@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import AppNavigation from './src/navigation'
+import{ActivityIndicator} from 'react-native'
+import {useFonts} from 'expo-font'
 
 export default function App() {
+  let [fontLoaded] = useFonts({
+    'urbanist-black': require('./assets/fonts/Urbanist-Black.ttf'),
+    
+  })
+
+  if(!fontLoaded){
+    return <ActivityIndicator size='large' color='#4F3422' />
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   <AppNavigation />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
