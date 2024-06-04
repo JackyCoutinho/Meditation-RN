@@ -1,9 +1,10 @@
-import { View, Text, Image, Dimensions, ImageBackground } from 'react-native'
+import { View, Text, Image, Dimensions,PixelRatio } from 'react-native'
 import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const {width, height} = Dimensions.get('screen')
 
@@ -64,6 +65,8 @@ const OnBoardingScreen = () => {
 
   const navigation = useNavigation()
   const [showHomePage, setShowHomePage] = useState(false)
+  const fontScale = PixelRatio.getFontScale()
+  const getFontSize = size => size/fontScale
 
 
   const buttonLabel = () =>{
@@ -80,10 +83,10 @@ const OnBoardingScreen = () => {
       return(
           <AppIntroSlider 
               data={slides}
-              // activeDotStyle={{
-              //     backgroundColor: '#f59e0b',
-              //     width: 30
-              // }}
+              activeDotStyle={{
+                  backgroundColor: '#4F3422',
+                  width: 30
+              }}
               renderItem={({item})=>{
                   return(
                     <View style={{width: width, height: height}} >
@@ -94,8 +97,8 @@ const OnBoardingScreen = () => {
                             className='w-full h-full'
                         />
                       </View>
-                      <View className=' justify-center items-center mt-[650] w-[400]'>
-                        <Text className='text-3xl text-center 'style={{color:item.primaryColor, fontFamily:'urbanist-extrabold'}}>{item.text1}
+                      <View className=' justify-center items-center w-[400]' style={{marginTop: hp(65)}}>
+                        <Text className='text-center 'style={{color:item.primaryColor, fontFamily:'urbanist-extrabold', fontSize: getFontSize(30)}}>{item.text1}
                         <Text style={{color:item.secondColor}}>{item.text2}
                         <Text style={{color:item.primaryColor}}>{item.text3}</Text></Text></Text>
                       </View>
