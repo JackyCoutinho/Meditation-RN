@@ -6,14 +6,14 @@ import { useNavigation } from '@react-navigation/native'
 const SplashScreen = () => {
   const navigation = useNavigation()
   useEffect(()=>{
-    setTimeout(()=>navigation.navigate('OnBoarding'),3000) 
+    setTimeout(()=>navigation.navigate('Welcome'),3000) 
   },[])
   return (
     
       <SafeAreaView className='flex-1 justify-center items-center '>
         <StatusBar style='dark'/>
       <View className='justify-center items-center'>
-        <Image source={require('../../assets/images/Logomark.png')}
+        <Image source={require('../../assets/images/logoprimary.png')}
           className="w-[80] h-[80]"     
         />
       </View>
